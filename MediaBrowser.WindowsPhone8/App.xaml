@@ -13,7 +13,9 @@
              xmlns:windowsPhone="clr-namespace:MediaBrowser.WindowsPhone"
              xmlns:controls="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
              xmlns:model="clr-namespace:MediaBrowser.Model;assembly=MediaBrowser.Shared"
-             xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Converters;assembly=Cimbalino.Phone.Toolkit">
+             xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Converters;assembly=Cimbalino.Phone.Toolkit"
+             xmlns:util="clr-namespace:Util"
+             xmlns:circularProgressBar="clr-namespace:CircularProgressBar">
 
     <!--Application Resources-->
     <Application.Resources>
@@ -181,6 +183,54 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
+
+            <Style TargetType="ProgressBar"
+                   x:Key="CircularProgressBarStyle">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ProgressBar">
+                            <Grid x:Name="LayoutRoot">
+                                <!-- attach the view model -->
+                                <circularProgressBar:CircularProgressBarViewModel.Attach>
+                                    <circularProgressBar:CircularProgressBarViewModel HoleSizeFactor="0.75" />
+                                </circularProgressBar:CircularProgressBarViewModel.Attach>
+
+
+                                <Ellipse Width="{Binding Diameter}"
+                                         Height="{Binding Diameter}"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Stroke="LightGray"
+                                         Opacity="0.5"
+                                         Fill="Transparent"
+                                         StrokeThickness="10">
+                                </Ellipse>
+
+                                <circularProgressBar:PiePiece CentreX="{Binding CentreX}"
+                                                CentreY="{Binding CentreY}"
+                                                RotationAngle="0"
+                                                WedgeAngle="{Binding Angle}"
+                                                Radius="{Binding Radius}"
+                                                InnerRadius="{Binding InnerRadius}"
+                                                Fill="Black"
+                                                Opacity="0.7" />
+
+                                <Grid util:GridUtils.RowDefinitions="*,2*,*"
+                                      util:GridUtils.ColumnDefinitions="*,2*,*">
+                                    <Viewbox Grid.Row="1"
+                                             Grid.Column="1">
+                                        <TextBlock Text="{Binding Percent, StringFormat=0%}"
+                                                   Foreground="Black"
+                                                   FontWeight="Bold"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center" />
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 

@@ -129,7 +129,10 @@
     <Compile Include="Behaviours\MBSysTray.cs" />
     <Compile Include="Behaviours\OnTextPropertyChangedBehaviour.cs" />
     <Compile Include="Behaviours\PanoramaBackgroundBehaviour.cs" />
+    <Compile Include="Controls\CircularProgressBarViewModel.cs" />
     <Compile Include="Controls\DynamicTextBlock.cs" />
+    <Compile Include="Controls\GridUtils.cs" />
+    <Compile Include="Controls\LinqToVisualTree.cs" />
     <Compile Include="Controls\LockScreenCollage.xaml.cs">
       <DependentUpon>LockScreenCollage.xaml</DependentUpon>
     </Compile>
@@ -140,8 +143,10 @@
       <DependentUpon>LogFileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MediaBrowserLogo.cs" />
+    <Compile Include="Controls\PiePiece.cs" />
     <Compile Include="Controls\ProfileBox.cs" />
     <Compile Include="Controls\ScrollableTextBlock.cs" />
+    <Compile Include="Controls\Utils.cs" />
     <Compile Include="Converters\AccentBrushConverter.cs" />
     <Compile Include="Converters\ClientTypeIconConverter.cs" />
     <Compile Include="Converters\CriticRatingConverter.cs" />
